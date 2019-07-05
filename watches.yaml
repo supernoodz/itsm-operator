@@ -1,5 +1,6 @@
 ---
-- version: v1alpha1
-  group: itsm.example.com
+- version: v1
+  # group: itsm.example.com
   kind: Namespace
   role: /opt/ansible/roles/namespace
+  # role: /Users/X/gocode/src/github.com/example-inc/itsm-operator/roles/namespace

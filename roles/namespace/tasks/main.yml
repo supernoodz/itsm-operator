@@ -1,2 +1,14 @@
 ---
 # tasks file for namespace
+
+- name: Create an incident
+  snow_record:
+    username: admin
+    password: MDD9iHmvdhW3
+    instance: dev88478
+    state: present
+    data:
+      short_description: "This is a test incident opened by Ansible"
+      severity: 3
+      priority: 2
+  register: new_incident
