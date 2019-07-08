@@ -18,7 +18,7 @@ $ kubectl create -f deploy/operator.yaml
 
 $ kubectl get pods -w
 
-$ kubectl get logs POD -f operator
+$ kubectl logs POD -f operator
 
 # Remove
 
