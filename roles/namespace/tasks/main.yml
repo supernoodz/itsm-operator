@@ -1,13 +1,32 @@
 ---
 # tasks file for namespace
 
-- name: Create namespace record
+- name: Fetch namespace sys_id label
+  set_fact:
+    project: "{{ lookup('k8s', api_version='v1', kind='Namespace', resource_name=meta.name) }}"
+
+- set_fact:
+    sys_id: '{{ project.metadata.labels.sys_id }}'
+  ignore_errors: true
+
+- set_fact:
+    sys_id: null
+  when: sys_id is not defined
+
+- debug: var=sys_id
+
+- name: Create/update namespace record
   snow_record:
     username: admin
     password: MDD9iHmvdhW3
     instance: dev88478
     state: present
-    lookup_field: name
+    number: '{{ sys_id }}'
     table: cmdb_ci_docker_container
+    lookup_field: sys_id
     data:
       name: 'namespace-{{ meta.name }}'
+      status: '{{ sys_id }}'
+  register: namespace_record
+
+# Finally, need to add sys_id label to the namespace
