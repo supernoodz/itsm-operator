@@ -13,9 +13,7 @@
     sys_id: null
   when: sys_id is not defined
 
-- debug: var=sys_id
-
-- name: Create/update namespace record
+- name: Create or update namespace record
   snow_record:
     username: admin
     password: MDD9iHmvdhW3
@@ -29,4 +27,12 @@
       status: '{{ sys_id }}'
   register: namespace_record
 
-# Finally, need to add sys_id label to the namespace
+- name: Update namespace sys_id label
+  k8s:
+    name: '{{ meta.name }}'
+    kind: Namespace
+    state: present
+    resource_definition:
+      metadata:
+        labels:
+          sys_id: '{{ namespace_record.record.sys_id }}'
