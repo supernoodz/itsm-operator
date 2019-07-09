@@ -45,6 +45,12 @@ spec:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
               value: "itsm-operator"
+            - name: SNOW_INSTANCE
+              value: "your_instance"
+            - name: SNOW_USER
+              value: "your_user"
+            - name: SNOW_PASS
+              value: "your_password"
       volumes:
         - name: runner
           emptyDir: {}

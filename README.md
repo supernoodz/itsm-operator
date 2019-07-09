@@ -4,6 +4,10 @@ $ git clone https://github.com/supernoodz/itsm-operator
 
 $ cd itsm-operator
 
+# Modify
+
+$ Edit deploy/operator.yaml to include your Service Now instance and credentials.
+
 # Deploy
 
 $ kubectl create -f deploy/role_binding.yaml

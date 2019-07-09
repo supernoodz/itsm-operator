@@ -15,9 +15,9 @@
 
 - name: Create or update namespace record
   snow_record:
-    username: admin
-    password: MDD9iHmvdhW3
-    instance: dev88478
+    instance: "{{ lookup('env','SNOW_INSTANCE') }}"
+    username: "{{ lookup('env','SNOW_USER') }}"
+    password: "{{ lookup('env','SNOW_PASS') }}"
     state: present
     number: '{{ sys_id }}'
     table: cmdb_ci_docker_container
