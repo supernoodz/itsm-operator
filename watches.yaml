@@ -1,6 +1,8 @@
 ---
 - version: v1
-  # group: itsm.example.com
+  # group:
   kind: Namespace
   role: /opt/ansible/roles/namespace
-  # role: /Users/X/gocode/src/github.com/example-inc/itsm-operator/roles/namespace
+  finalizer:
+    name: finalizer/v1
+    role: /opt/ansible/roles/finalizer

@@ -13,7 +13,7 @@
     sys_id: null
   when: sys_id is not defined
 
-- name: Create or update namespace record
+- name: Update namespace record as absent
   snow_record:
     instance: "{{ lookup('env','SNOW_INSTANCE') }}"
     username: "{{ lookup('env','SNOW_USER') }}"
@@ -24,15 +24,5 @@
     lookup_field: sys_id
     data:
       name: 'namespace-{{ meta.name }}'
-      status: 'present: {{ sys_id }}'
+      status: 'absent: {{ sys_id }}'
   register: namespace_record
-
-- name: Update namespace sys_id label
-  k8s:
-    name: '{{ meta.name }}'
-    kind: Namespace
-    state: present
-    resource_definition:
-      metadata:
-        labels:
-          sys_id: '{{ namespace_record.record.sys_id }}'
