@@ -1,3 +1,7 @@
+Kubernetes Ansible Operator which creates and updates a Service Now record for Namespace CRUD operations.
+
+## Implementation
+
 # Clone
 
 $ git clone https://github.com/supernoodz/itsm-operator
@@ -6,7 +10,7 @@ $ cd itsm-operator
 
 # Modify
 
-$ Edit deploy/operator.yaml to include your Service Now instance and credentials.
+$ Edit deploy/operator.yaml to include your Service Now instance, credentials and table.
 
 # Deploy
 

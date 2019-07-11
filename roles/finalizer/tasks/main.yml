@@ -20,7 +20,7 @@
     password: "{{ lookup('env','SNOW_PASS') }}"
     state: present
     number: '{{ sys_id }}'
-    table: cmdb_ci_docker_container
+    table: "{{ lookup('env','SNOW_TABLE') }}"
     lookup_field: sys_id
     data:
       name: 'namespace-{{ meta.name }}'
